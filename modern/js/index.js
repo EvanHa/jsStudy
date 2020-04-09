@@ -1,7 +1,13 @@
 // 조건문
-const a=1;
-if (a+1===2) {
-    const a = 2;
-    console.log('in > a ?= ' + a);
-} 
-console.log('out > a ?= ' + a);
+const device='iphone';
+switch(device) {
+    case 'iphone':
+        console.log('아이폰');
+        break;
+    case 'ipad':
+        console.log('ipad');
+        break;
+    default:
+        console.log('unknown..');
+}
+
