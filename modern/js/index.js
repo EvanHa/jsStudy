@@ -1,10 +1,6 @@
-// 세미콜론을 삽입하지 않을경우, 아래 구분은 세미콜론 자동 삽입 처리가 되지 않는다.
-// 이유는 [] 앞에서는 세미콜론이 있다고 인식하지 않기 때문
-// alert( 'Hello, world!' )[1, 2].forEach(alert)
-// 세미콜론을 반드시 삽입.
-alert( 'Hello, world!' );
-[1, 2].forEach(alert)
-
-
-
+// 하위 호환성의 이슈로 ES5의 변경사항 대부분은 기본모드에서 활성화되지 않도록 설계되어있음.
+// 대신 'use strict' 지시자를 통해 엄격모드(strict mode)를 활성화 할 수 있음.
+// use strict를 사용해라.
+// use strict를 취소할 방법은 없음.
+'use strict';
 
