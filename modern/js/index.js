@@ -1,21 +1,21 @@
-// 비구조 할당(객체구조분해)
-const ironMan={
-    name: '토니 스타크',
-    actor: '로버트 다우니 주니어',
-    alias: '아이언맨'
+// this
+
+const dog = {
+    name: '멍멍이',
+    sound: '멍멍!',
+    say: function() { // arrow function을 사용할 경우, this가 dog와 연결되지 않음.
+        console.log(this.sound);
+    }
 };
 
-const captainAmerica={
-    name: '스티븐 로저스',
-    actor: '크리스 에반스',
-    alias: '캡틴 아메리카'
+const cat = {
+    name: '야옹이',
+    sound: '야옹~'
 };
 
-function print(hero) {
-    const { alias, name, actor } = hero;
-    const text = `${alias}(${name})역할을 맡은 배우는 ${actor} 입니다.`;
-    console.log(text);
-}
+cat.say = dog.say;
+dog.say();
+cat.say();
 
-print(ironMan);
-print(captainAmerica);
+const catSay = cat.say;
+catSay(); // catSay에서는 this가 뭔지 모름. 할당된게 없으니깐
