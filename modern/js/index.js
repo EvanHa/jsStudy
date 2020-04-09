@@ -1,17 +1,7 @@
-// 논리연산자
-// 1. NOT !
-// const a = !true;
-// alert(a);
-
-// 2. AND &&
-// const a = true && true;
-// alert(a);
-// const b = true && false;
-// alert(b);
-
-// 3. OR  ||
-const a = false || true;
-console.log(a);
-
-// 다 섞여 있을 경우, 논리 -> AND -> OR  순으로 처리된다.
-
+// 비교연산자
+const a = 1;
+const b = 2;
+const equals = a === b; // 3번 입력해야 데이터 타입과 밸류다 같은지 검사
+console.log(equals);
+console.log(a < b);
+console.log(a > b);
