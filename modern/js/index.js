@@ -1,55 +1,22 @@
-// getter
-const numbers = {
-    a:1,
-    b:2,
-    get sum() {
-        console.log('sum 함수가 실행됩니다.');
-        return this.a+this.b;
-    }
-};
+// array
+// 자바스크립트에서 배열내 원소들은 타입이 서로 달라도 상관없다
+const array = [1, 'blabla', {}, 4];
+console.log(array[3]);
 
-console.log(numbers.sum);
-numbers.b=5;
-console.log(numbers.sum);
+const objects = [
+    {name:'멍멍이'},
+    {name:'야옹이'}
+];
+console.log(objects);
+console.log(objects[0]);
+console.log(objects[1]);
 
-// setter
-const dog = {
-    _name: '멍멍이',
-    set name(value) {
-        console.log('이름이 바뀝니다..'+value);
-        this._name=value;
-    }
-};
 
-console.log(dog._name);
-dog.name='뭉뭉이';
-console.log(dog.name);
+// 새로운 항목 추가할때는 push를 사용
+objects.push({
+    name: '멍뭉이'
+});
+console.log(objects);
 
-const numbers2 = {
-    _a: 1,
-    _b: 2,
-    sum: 3,
-    calculate() {
-        console.log('calculate');
-        this.sum=this._a+this._b;
-    },
-    get a() {
-        return this._a;
-    },
-    get b() {
-        return this._b;
-    },
-    set a(value) {
-        this._a=value;
-        this.calculate();
-    },
-    set b(value) {
-        this._b=value;
-        this.calculate();
-    }
-};
-
-console.log(numbers2.sum);
-numbers2.a=5;
-numbers2.b=7;
-console.log(numbers2.sum);
+// 배열의 크기
+console.log(objects.length);
