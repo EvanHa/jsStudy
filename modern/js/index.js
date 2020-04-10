@@ -1,65 +1,79 @@
-// 조건문 advanced
+// 비구조화 할당(구조 분해)
 
-// function isAnimal(text) {
-//     return (
-//         text === '고양이' ||
-//         text === '개' ||
-//         text === '거북이'
-//     );
+// 객체 비구조화 할당
+// const object = { a:1, b:2};
+
+// function print({a,b}) {
+//     console.log(a);
+//     console.log(b);
 // }
-
-// function isAnimal(text) {
-//     const animals = ['고양이', '개', '거북이'];
-//     return animals.includes(text);
-// }
-
-//const isAnimal = (text) => { return ['고양이', '개', '거북이'].includes(text); }
-const isAnimal = text => ['고양이', '개', '거북이'].includes(text);
-
-console.log(isAnimal('개'));
-console.log(isAnimal('노트북'));
-
-function getSound(animal) {
-    // if (animal === '개') return '멍멍';
-    // if (animal === '고양이') return '야옹';
-    // if (animal === '참새') return '짹짹';
-    // if (animal === '비둘기') return '구구구구';
-    // return '...?';
-    
-    
-    const sounds = {
-        개: '멍멍',
-        고양이: '야옹~',
-        참새: '짹짹',
-        비둘기: '구구구구'
-    };
-    return sounds[animal] || '...?';
-}
-
-console.log(getSound('개'));
-console.log(getSound('인간'));
+// print(object);
 
 
-function makeSound(animal) {
-    const tasks = {
-        개: () => {
-            console.log('멍멍');
-        },
-        고양이() {
-            console.log('야옹!');
-        },
-        비둘기: function() {
-            console.log('구구구구');
+const object = {a:1};
+const {a, b=2} = object;
+console.log(a);
+console.log(b);
+
+
+const animal = {
+    name: '멍멍이',
+    type: '개'
+};
+
+//const nickname = animal.name;
+const { name: nickname } = animal;
+
+console.log(nickname);
+console.log(animal);
+
+
+// 배열 비구조화 할당
+const array = [1,2];
+// const one = array[0];
+// const two = array[1];
+
+const [one, two] = array;
+console.log(one);
+console.log(two);
+
+
+// deep obejct 비구조화 할당
+const deepObject = {
+    state: {
+        information: {
+            name: 'velopert',
+            languages: ['korean', 'english', 'chinese']
         }
-    }
-    // if (!tasks[animal]) {
-    //     console.log('...?');
-    //     return ;
-    // }
-    // return tasks[animal]();
-    return tasks[animal] ? tasks[animal]() : console.log('...?');
+    },
+    value:5
 }
 
-makeSound('개');
-makeSound('비둘기');
-makeSound('인간');
+// 1. 2번으로 나눠서 빼오기
+// const { name, languages } = deepObject.state.information;
+// const { value } = deepObject;
+
+// const extracted = {
+//     name,
+//     languages,
+//     value
+// };
+
+
+// 2. 1번에 빼오기
+const {
+    state: {
+        information: {
+            name, languages: [firstLang, secondLang]
+        }
+    },
+    value
+} = deepObject;
+
+const extracted = {
+    name,
+    firstLang, secondLang,
+    value
+};
+
+console.log(extracted);
