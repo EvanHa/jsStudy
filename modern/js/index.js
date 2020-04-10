@@ -1,79 +1,49 @@
-// 비구조화 할당(구조 분해)
+// spread, rest (ES6에 도입됨)
 
-// 객체 비구조화 할당
-// const object = { a:1, b:2};
-
-// function print({a,b}) {
-//     console.log(a);
-//     console.log(b);
-// }
-// print(object);
-
-
-const object = {a:1};
-const {a, b=2} = object;
-console.log(a);
-console.log(b);
-
-
-const animal = {
-    name: '멍멍이',
-    type: '개'
+// spread (객체나 배열을 펼칠 수 있음)
+const slime = {
+    name: '슬라임'
 };
 
-//const nickname = animal.name;
-const { name: nickname } = animal;
-
-console.log(nickname);
-console.log(animal);
-
-
-// 배열 비구조화 할당
-const array = [1,2];
-// const one = array[0];
-// const two = array[1];
-
-const [one, two] = array;
-console.log(one);
-console.log(two);
-
-
-// deep obejct 비구조화 할당
-const deepObject = {
-    state: {
-        information: {
-            name: 'velopert',
-            languages: ['korean', 'english', 'chinese']
-        }
-    },
-    value:5
-}
-
-// 1. 2번으로 나눠서 빼오기
-// const { name, languages } = deepObject.state.information;
-// const { value } = deepObject;
-
-// const extracted = {
-//     name,
-//     languages,
-//     value
+// const cuteSlime = {
+//     name: '슬라임',
+//     attribute: 'cute'
 // };
-
-
-// 2. 1번에 빼오기
-const {
-    state: {
-        information: {
-            name, languages: [firstLang, secondLang]
-        }
-    },
-    value
-} = deepObject;
-
-const extracted = {
-    name,
-    firstLang, secondLang,
-    value
+const cuteSlime = {
+    ...slime,
+    attribute: 'cute'
 };
 
-console.log(extracted);
+
+// const purpleCuteSlime = {
+//     name: '슬라임',
+//     attribute: 'cute',
+//     color: 'purple'
+// };
+const purpleCuteSlime = {
+    ...cuteSlime,
+    color: 'purple'
+};
+
+const greenCuteSlime = {
+    ...purpleCuteSlime,
+    color: 'green'
+};
+
+console.log(slime);
+console.log(cuteSlime);
+console.log(purpleCuteSlime);
+console.log(greenCuteSlime);
+
+
+const animals = ['개', '고양이', '참새'];
+const anotherAnimals = [ ...animals, '비둘기'];
+console.log(animals);
+console.log(anotherAnimals);
+
+const numbers = [1,2,3,4,5];
+const result = [...numbers, 1000, ...numbers];
+console.log(result);
+
+
+
