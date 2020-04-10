@@ -1,35 +1,26 @@
-// 배열 내장함수
+// 객체
+// function Animal(type, name, sound) {
+//     this.type = type;
+//     this.name = name;
+//     this.sound = sound;
+//     this.say = function() {
+//         console.log(this.sound);
+//     }
+// };
 
-// reduce (잘사용하면 매우 유용한 함수)
-const numbers = [1,2,3,4,5];
+// say는 공통적으로 사용되니깐, prototype으로 변경
+function Animal(type, name, sound) {
+    this.type = type;
+    this.name = name;
+    this.sound = sound;
+};
 
-let sum = 0;
-numbers.forEach(n=>{
-    sum += n;
-});
-console.log(sum);
+Animal.prototype.say = function() {
+    console.log(this.sound);
+}
 
-// accumulator는 누적된 값
-// current는 배열의 원소들 값이 사용됨
-const reduced = numbers.reduce((accumulator, current)=> accumulator+current, 0);
-console.log("sum : " + reduced);
-// reduce로 평균 계산
-const reduced2 = numbers.reduce((accumulator, current, index, array) => {
-    if (index == array.length - 1) {
-        return (accumulator + current) / array.length;
-    }
-    return accumulator + current;
-}, 0);
-console.log("average : "+reduced2);
+const dog = new Animal('개', '멍멍이', '멍멍');
+const cat = new Animal('고양이', '야옹이', '야옹');
 
-
-const alphabets = ['a', 'a', 'b', 'b', 'c', 'c', 'c', 'd'];
-const counts = alphabets.reduce((acc, current,)=> {
-    if (acc[current]) {
-        acc[current] += 1;
-    } else {
-        acc[current] = 1;
-    }
-    return acc;
-}, {});
-console.log(counts);
+dog.say();
+cat.say();
