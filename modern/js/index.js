@@ -1,15 +1,21 @@
-// hoisting
+// 비동기 처리
 
-myFunction();
+function work(callback) {
+    setTimeout(()=> {
+        const start = Date.now();
+        for (let i=0; i < 1000000000; i++) {
 
-function myFunction() {
-    console.log('hello world');
+        }
+        const end = Date.now();
+        console.log(end-start , 'ms');
+        callback(end-start);
+    }, 0);
+    
 }
 
-console.log(temp)
-var temp = 2;
-// ==> 위의 코드는 아래 코드로 처리됨.
-// var temp
-// console.log(temp)
-// temp = 2
-
+console.log('작업 시작');
+work((ms)=>{
+    console.log('작업이 끝났어요!');
+    console.log(ms + 'ms 걸렸다고 해요');
+});
+console.log('다음 작업');
