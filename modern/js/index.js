@@ -1,28 +1,15 @@
 // 배열 내장함수
 
-// filter
-const todos = [
-    {
-        id:1,
-        text: 'javascript',
-        done: true,
-    },
-    {
-        id: 2,
-        text: 'function',
-        done: true,
-    },
-    {
-        id: 3,
-        text: 'object',
-        done: true,
-    },
-    {
-        id: 4,
-        text: 'array',
-        done: false
-    }
-];
+// splice (기존의 배열을 건드림)
+const numbers = [10, 20, 30, 40];
+const index = numbers.indexOf(30);
+console.log(index);
 
-const tasksNotDone = todos.filter(todo => todo.done===false);
-console.log(tasksNotDone);
+const spliced = numbers.splice(index, 1);
+console.log(numbers);
+console.log(spliced);
+
+// slice (기존의 배열을 건드리지 않음)
+const sliced = numbers.slice(0, 2);
+console.log(sliced);
+console.log(numbers);
