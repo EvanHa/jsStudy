@@ -1,25 +1,42 @@
-// Truthy (true 같은거) 
-function print(person) {
-    //if ((person === undefined) || (person === null)) { 
-    if (!person) {
-        return ;
-    }
-    console.log(person.name);
-}
-
-const person= {
-    name: 'John',
+// 단축 평가 논리 계산법
+const dog = {
+    name: '멍멍이',
 };
 
-print();
+function getName(animal) {
+    // if (animal) {
+    //     return animal.name;
+    // } else {
+    //     return undefined;
+    // }
+    // --> 위의 내용은 아래와 같이 바꿀수 있음
+    return animal && animal.name;
+}
+
+const name = getName();
+console.log(name);
 
 
-// Falsy (false 같은거)
-// javascript에서는 undefined, null을 false로 간주한다. 그래서 아래 구문은 true가 찍힘..
-// 아래 내용을 제외하고는 Truthy한 값으로 취급
-console.log(!undefined);
-console.log(!null);
-console.log(!0);
-console.log(!'');
-console.log(!NaN);
-console.log(!false);
+// 앞에 falsy 가 오면, 뒤에 볼것도 없이 앞에것이 출력
+// 앞에 truthy가 오면, 뒤에 값을 체크하여 결과 출력
+console.log(true && 'hello');
+console.log(false && 'hello');
+console.log('hello' && 'bye');
+console.log(null && 'hello');
+
+const namelessDog = {
+    name: '',
+};
+
+function getName(animal) {
+    const name = animal && animal.name;
+    // if (!name) {
+    //     return '이름없는 동물입니다.'
+    // } else {
+    //     return name;
+    // }
+    return (name || '이름없는 동물입니다.');
+}
+
+const name1 = getName(namelessDog);
+console.log(name1);
