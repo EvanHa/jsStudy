@@ -1,30 +1,55 @@
-// spread, rest (ES6에 도입됨)
+// scope
+// 1. global 
+// 2. function (function 내부)
+// 3. block (if, for, switch )
 
-// rest
-const purpleCuteSlime = {
-    name: '슬라임',
-    attribute: 'cute',
-    color: 'purple'
-};
+// const value = 'hello';
 
-const { color, ...cuteSlime } = purpleCuteSlime;
-console.log(color);
-console.log(cuteSlime);
+// function myFunction() {
+//     console.log('myFunction: ');
+//     console.log(value);
+// }
 
-const { attribute, ...slime } = cuteSlime;
-console.log(slime);
+// // 함수형 스코프
+// function otherFunction() {
+//     console.log('otherFunction: ');
+//     const value = 'bye!';
+//     console.log(value);
+// }
 
+// myFunction();
+// otherFunction();
 
-// 함수 파라미터 rest
-function sum(...rest) {
-    return rest.reduce((acc, current) => acc + current, 0);
+// console.log('global scope: ');
+// console.log(value);
+
+// function myFunction() {
+//     const value = 'bye!';
+//     const anotherValue = 'world';
+//     function functionInside() {
+//         console.log('functionInside: ');
+//         console.log(value);
+//         console.log(anotherValue);
+//     }
+//     functionInside();
+// }
+
+// myFunction();
+// console.log('global scope:');
+// console.log(value);
+// console.log(anotherValue);
+
+function myFunction() {
+    const value = 'bye!';
+    if (true) {
+        const value = 'world';
+        console.log('block scope: ');
+        console.log(value);
+    }
+    console.log('function scope');
+    console.log(value);
 }
-console.log(sum(1,2,3,4,5,6,7));
 
-
-function subtract(x, y) {
-    return x - y;
-}
-const result = subtract(1,2);
-console.log(result);
-
+myFunction();
+console.log('global scope:');
+console.log(value);
