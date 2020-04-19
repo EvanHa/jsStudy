@@ -1,30 +1,25 @@
-// spread operator, 펼침연산자.
+// from method
 
-let pre = ["apple", "orange", 100];
-let newData = [...pre];
+function addMark() {
+    let newData = [];
 
-console.log(pre);
-console.log(newData);
-console.log(pre === newData);
-
-// 참조가 아니라, 새로운 것을 생성해서 갖고 있다. concat 사용한 것 같은 효과
-// 참조가 아니기 때문에 pre newData는 다른 객체인 것.
-
-
-// 응용
-let pre1 = [100, 200, "hello", null];
-let newData1 = [0,1,2,3,...pre,4,];
-console.log(pre1);
-console.log(newData1);
-
-
-
-function sum(a,b,c) {
-    return a+b+c;
+    // 가변적 parameter 사용시에는 arguments를 이용할 수 있다.
+    for (let i=0; i< arguments.length; i++ ) {
+        newData.push(arguments[i] + "!");
+    }
+    console.log(newData);
 }
-let pre2 = [100, 200, 300];
-console.log(sum.apply(null, pre2));
-console.log(sum(100,200,300));
-console.log(sum(pre2[0],pre2[1],pre2[2]));
-// -> 위와 같은 일을 하는 새로운 방법
-console.log(sum(...pre));
+
+addMark(1,2,3,4,5);
+
+// 위에 사용한 arguments는 배열은 아니다. 그래서 배열의 map을 사용할 수 없다.
+// 이 값을 새로운 배열에 넣어서 만들때 from을 사용 하면 유용하다.
+function addMark_Map() {
+    let newArray = Array.from(arguments);
+    let newData = newArray.map(function(value){
+        return value + "!";
+    });
+    console.log(newData);
+}
+
+addMark_Map(1,2,3,4,5,6,7,8,9);
