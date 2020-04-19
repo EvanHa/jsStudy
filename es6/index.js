@@ -1,21 +1,7 @@
-// object 생성
+// Destructuring
 
-function getObj() {
-    let name = "crong";
-    const getName = function() {
-        return name;
-    }
-    const setName = function(newname) {
-        name = newname;
-    }
-    const printName = function() {
-        console.log(name);
-    }
-    return {
-        getName : getName,
-        setName : setName
-    }
-}
-
-let obj = getObj();
-console.log(obj.getName());
+let data = ["crong", "honux", "jk", "jinny"];
+//let jisu = data[0];
+//let jung = data[2];
+let [jisu,,jung] = data;
+console.log(jisu, jung);
