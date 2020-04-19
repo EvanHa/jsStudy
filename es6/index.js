@@ -1,12 +1,21 @@
-// ES2015 string에 새로운 메서드들.
+// array for of
+
+let data = [1,2,undefined,NaN,null,""];
+data.forEach(function(value){
+    console.log(value);
+});
+
+Array.prototype.getIndex = function() {};
+for(let idx in data) {
+    console.log(data[idx]);
+};
+// for in을 썼을때는 상위(prototype)의 것도 순해해서 출력해버린다.
+
+for(let value of data) {
+    console.log(value);
+}
 
 let str = "hello world!!!";
-let matchstr1 = "hello";
-let matchstr2 = "!!";
-
-// 시작하는 문자가 동일한지 확인
-console.log(str.startsWith(matchstr1));
-// 끝나는 문자가 동일한지 확인
-console.log(str.endsWith(matchstr2));
-// 해당 단어가 포함되었는지 확인
-console.log(str.includes("world"));
+for(let value of str) {
+    console.log(value);
+}
