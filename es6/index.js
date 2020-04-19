@@ -1,10 +1,21 @@
-function print() {
-    let data = document.querySelectorAll("li");
-    let listArray = Array.from(data);
-    let eArray = listArray.filter(function(value) {
-        return value.innerText.includes("e");
-    });
-    return eArray;
+// object 생성
+
+function getObj() {
+    let name = "crong";
+    const getName = function() {
+        return name;
+    }
+    const setName = function(newname) {
+        name = newname;
+    }
+    const printName = function() {
+        console.log(name);
+    }
+    return {
+        getName : getName,
+        setName : setName
+    }
 }
 
-console.log(print());
+let obj = getObj();
+console.log(obj.getName());
