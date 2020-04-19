@@ -1,4 +1,4 @@
-// Destructuring 활용 json parsing
+// Destructuring 활용 event 객체 전달
 
 let news = [
     {
@@ -21,13 +21,14 @@ let news = [
     }
 ];
 
-let [,mbc] = news;
-console.log(mbc);
+function getNewsList([,{newslist}]) {
+    console.log(newslist);
+}
 
-let {title, imgurl} = mbc;
-console.log(title);
-console.log(imgurl);
+getNewsList(news);
 
-let [, {title:title1, imgurl:imgurl1}] = news;
-console.log(title1);
-console.log(imgurl1);
+
+
+document.querySelector("div").addEventListener("click",function({target}) {
+    console.log(target.innerText);
+});
