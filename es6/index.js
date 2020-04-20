@@ -1,5 +1,6 @@
 // setPrototypeOf
 
+// Parent
 const healthObj = {
     showHealth : function() {
         console.log("오늘 운동시간 : " + this.healthTime);
@@ -9,13 +10,15 @@ const healthObj = {
     }
 }
 
-const myHealth = {
-    name : "crong",
-    lastTime : "11:20"
+// Child obj
+const heathChildObj = {
+    getAge : function () {
+        return this.age; 
+    }
 }
 
-const newObj = Object.setPrototypeOf(myHealth, healthObj); // healthObj의 함수들이 myHealth의 prototype으로 들어감.
-console.log("myhealth is", myHealth);
-console.log("healthObj is", healthObj);
-console.log(newObj);
-
+Object.setPrototypeOf(heathChildObj, healthObj);
+const childOjb = Object.setPrototypeOf({
+    age : 22
+}, heathChildObj);
+console.log("childobj is ", childOjb);
