@@ -1,15 +1,28 @@
-// arrow function
+// this context of arrow function
 
-setTimeout(() => {
-    console.log("set timeout");
-}, 1000);
+const myObj = {
+    runTimeout() {
+        setTimeout(function(){
+            console.log(this === window);
+            this.printData();
+        }.bind(this), 200);
+    },
+    printData() {
+        console.log("hi codesquad!");
+    }
+}
 
-let newArr = [1,2,3,4,5].map(function(value, index, object){
-    return value * 2;
-});
+const myObj1 = {
+    runTimeout() {
+        setTimeout(()=>{
+            console.log(this === window);
+            this.printData();
+        }, 200);
+    },
+    printData() {
+        console.log("hi codesquad!");
+    }
+}
 
-console.log(newArr);
-
-let newArr2 = [1,2,3,4,5].map((v)=> (v*2));
-console.log("arrow2", newArr2);
-
+myObj.runTimeout();
+myObj1.runTimeout();
