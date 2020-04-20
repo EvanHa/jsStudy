@@ -1,28 +1,19 @@
-// ES6 Class (Class Keyword가 생김)
-
-// 기존 방법
-function Health(name) {
-    this.name = name;
-}
-
-Health.prototype.showHealth = function () {
-    console.log(this.name + "님 안녕하세요");
-}
-
-const h = new Health("crong");
-h.showHealth();
-
-// class로 변경
-class Health2 {
-    constructor(name) {
-        this.name = name;
-    }
-
-    // prototype으로 들어감.
-    showHealth() {
-        console.log("안녕하세요" + this.name);
+// Object assign 메서드
+const healthObj = {
+    showHealth : function() {
+        console.log("오늘 운동시간 " + this.healthTime);
     }
 }
 
-const myHealth = new Health2("crong");
-myHealth.showHealth();
+const myHealth = Object.create(healthObj);
+myHealth.healthTime = "11:20";
+myHealth.name = "crong";
+
+console.log(myHealth);
+
+
+const myHealth1 = Object.assign(Object.create(healthObj),{
+    name : "crong",
+    lastTime : "11:20"
+});
+console.log("myHealth is ", myHealth);
