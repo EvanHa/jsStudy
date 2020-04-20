@@ -1,11 +1,28 @@
-// rest parameters
+// ES6 Class (Class Keyword가 생김)
 
-// 가변 인자 파라마터가 모두 숫자인지 체크 하는 함수
-// 하나라도 숫자가 아닌 경우 false return
-function checkNum(...argArray) {
-    console.log(toString.call(argArray));
-    const result = argArray.every((v)=>typeof v === "number");
-    console.log(result);
+// 기존 방법
+function Health(name) {
+    this.name = name;
 }
 
-const result = checkNum(10,2,3,4,5,"55");
+Health.prototype.showHealth = function () {
+    console.log(this.name + "님 안녕하세요");
+}
+
+const h = new Health("crong");
+h.showHealth();
+
+// class로 변경
+class Health2 {
+    constructor(name) {
+        this.name = name;
+    }
+
+    // prototype으로 들어감.
+    showHealth() {
+        console.log("안녕하세요" + this.name);
+    }
+}
+
+const myHealth = new Health2("crong");
+myHealth.showHealth();
