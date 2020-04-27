@@ -81,3 +81,57 @@ console.log(
 _._map([1,2,3,4], function(v){
   return v+10;
 });
+
+
+// 커링
+// 함수와 인자를 다루는 기법,
+// 함수에 인자를 하나씩 적용하다가, 필요한 인자가 모두 채워지면 함수 본체를 실행하는 기법
+
+function _curry(fn) {
+  return function(a, b) {
+    if (arguments.length == 2) return fn(a,b);
+    return function(b) {
+      return fn(a,b);
+    }
+  }
+}
+
+function _curryr(fn) {
+  return function(a, b) {
+    return arguments.length == 2 ? fn(a,b) : function(b) { return fn (b, a); };
+  }
+}
+
+var add = _curry(function (a,b) {
+  return a+b;
+});
+
+console.log(add(10, 5));
+var add10 = add(10);
+console.log(add10(5));
+console.log( add(5)(3) );
+
+
+// 2. _get 만들어 좀 더 간단하게 하기
+function _get(obj, key) {
+  return obj == null ? undefined : obj[key];
+}
+
+// -> currying을 통해 더 간단하게 하기
+var _get2 = _curryr(function(obj, key) {
+  return obj == null ? undefined : obj[key];
+});
+var get_name = _get2('name');
+
+var user1 = users[0];
+console.log(user1.name);
+console.log(_get(user1, 'name'));
+
+//console.log( user[10].name );
+console.log( _get(users[10], 'name'));
+
+console.log(_get2('name')(user1));
+
+console.log( get_name(user1) );
+console.log( get_name(users[3]) );
+console.log( get_name(users[4]) );
