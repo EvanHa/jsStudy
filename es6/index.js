@@ -1,4 +1,6 @@
 // 함수형으로 전환하기
+import _ from "./_.js";
+
 
 var users = [
   { id: 1, name: 'ID', age: 36 },
@@ -44,3 +46,38 @@ for (var i = 0; i < temp_users.length; i++) {
 }
 console.log(ages);
 
+
+
+//외부 다형성
+// 1. array_like, arguments, document.querySelectorAll
+// 아래 map, filter는 함수가 아니라 method이다. 
+// [1,2,3,4] 객체의 method라는 말이다.
+// 즉, 어레이여야 사용할 수 있는 method이다.
+// 자바스크립트에는 array like 가 존재한다. 배열처럼 보이지만, 사실은 배열이 아닌것이다.
+// 이런 array like에는 map, filter가 존재하지 않는다.
+// map, filter는 array에 존재하는 method이기 때문.
+// 함수형 프로그래밍에서는 다형성이 가능하므로, 따로 만든 map, filter에서는 모두 사용할 수 있다.
+console.log(
+  [1,2,3,4].map(function(val){
+      return val * 2;
+  })
+);
+
+console.log(
+  [1,2,3,4].filter(function(val){
+      return val % 2;
+  })
+);
+
+console.log(document.querySelectorAll('*'));
+console.log(
+  _._map(document.querySelectorAll('*'), function(node){
+    return node.nodeName;
+  })
+);
+
+// 내부 다형성
+// predi, iter, mapper
+_._map([1,2,3,4], function(v){
+  return v+10;
+});

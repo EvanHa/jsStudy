@@ -1,3 +1,5 @@
+'use strict';
+
 function  _filter(users, predi) { // 응용형 함수.
     var new_list = [];
     _each(list, function(val){
@@ -22,3 +24,13 @@ function _each(list, iter) {
     }
     return list;
 }
+
+function _curry(fn) {
+    return function(a) {
+        return function(b) {
+            return arguments.length ==2 ? fn(a,b) : function(b) {return fn(a,b0);}
+        }
+    }
+}
+
+export default {_filter, _map, _each, _curry};
